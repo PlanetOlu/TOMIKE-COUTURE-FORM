@@ -21,6 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
             values: selectedValues,
             email: userEmail
         });
+
+        // Send data to Google Analytics
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'style_preferences_submitted', {
+        'style_category': styleInterest,
+        'number_of_values': selectedValues.length,
+        'has_email': userEmail ? 'yes' : 'no'
+    });
+}
         
         // Show success message
         alert('Thank you! Your style preferences have been saved. This helps us create better collections for you.');
