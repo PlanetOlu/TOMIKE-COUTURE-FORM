@@ -1,126 +1,926 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TOMIKE Customer Preferences</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOMIKE | Your Style, Our Blueprint</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics (gtag.js) - ADDED BACK -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BRZSP1QMX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1BRZSP1QMX');
+    </script>
+    
     <style>
-        /* This is the styling (like choosing colors and fonts) */
+        :root {
+            --burnt-orange: #cc5500;
+            --orange-light: #ff7f3f;
+            --orange-faded: #ffb07f;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #888888;
+            --gold: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #fef9f5;
+            color: var(--black);
+            line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .brand-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(204, 85, 0, 0.05) 0%, rgba(255, 127, 63, 0.05) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--burnt-orange), var(--orange-light), var(--burnt-orange));
+        }
+        
+        .brand-logo {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--burnt-orange);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .brand-tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--black);
+            margin-bottom: 15px;
+            font-style: italic;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .form-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+        
+        .intro-heading {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .intro-heading .highlight {
+            color: var(--burnt-orange);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro-heading .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(204, 85, 0, 0.2);
+            z-index: -1;
+        }
+        
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            line-height: 1.8;
+        }
+        
+        .callout-box {
+            background: linear-gradient(135deg, rgba(204, 85, 0, 0.08) 0%, rgba(255, 127, 63, 0.08) 100%);
+            border-left: 4px solid var(--burnt-orange);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        .callout-box strong {
+            color: var(--burnt-orange);
         }
         
         .form-container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
         
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        
-        .question {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        
-        select, input {
+        .form-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--burnt-orange), var(--orange-light));
         }
         
-        .checkbox-group {
-            margin: 10px 0;
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #eee;
         }
         
-        .checkbox-group label {
-            font-weight: normal;
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--burnt-orange);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
+            gap: 12px;
         }
         
-        button {
-            background: #000;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
+        .section-title i {
+            background-color: rgba(204, 85, 0, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--burnt-orange);
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--black);
+            font-size: 1.1rem;
+        }
+        
+        input[type="text"], input[type="email"], textarea, select {
             width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #fcfcfc;
         }
         
-        button:hover {
-            background: #333;
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--burnt-orange);
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(204, 85, 0, 0.1);
+        }
+        
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 15px;
+        }
+        
+        .outfit-option {
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .outfit-option:hover {
+            background-color: #fff5f0;
+            border-color: var(--orange-faded);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .outfit-option.selected {
+            background-color: #fff0e8;
+            border-color: var(--burnt-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(204, 85, 0, 0.1);
+        }
+        
+        .outfit-option input {
+            margin-right: 15px;
+            transform: scale(1.3);
+            accent-color: var(--burnt-orange);
+        }
+        
+        .outfit-name {
+            font-weight: 600;
+            color: var(--black);
+            font-size: 1.05rem;
+        }
+        
+        .selection-counter {
+            font-size: 1rem;
+            color: var(--black);
+            margin-top: 20px;
+            text-align: center;
+            padding: 12px;
+            background-color: rgba(204, 85, 0, 0.05);
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        
+        .selection-counter span {
+            color: var(--burnt-orange);
+            font-size: 1.2rem;
+        }
+        
+        .fabrics-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .fabric-tag {
+            padding: 12px 20px;
+            background-color: #f5f5f5;
+            border-radius: 25px;
+            border: 2px solid #e8e8e8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .fabric-tag:hover {
+            background-color: #fff0e8;
+            border-color: var(--orange-faded);
+            transform: translateY(-2px);
+        }
+        
+        .fabric-tag.selected {
+            background-color: var(--burnt-orange);
+            color: white;
+            border-color: var(--burnt-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 85, 0, 0.2);
+        }
+        
+        .priority-note {
+            background: linear-gradient(135deg, rgba(204, 85, 0, 0.08) 0%, rgba(255, 127, 63, 0.08) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 1.05rem;
+            border-left: 5px solid var(--burnt-orange);
+            position: relative;
+        }
+        
+        .priority-note::before {
+            content: "✨";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--burnt-orange) 0%, var(--orange-light) 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(204, 85, 0, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-content {
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            animation: popIn 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .success-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--burnt-orange), var(--orange-light));
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--burnt-orange);
+            margin-bottom: 25px;
+            animation: bounce 1s ease infinite alternate;
+        }
+        
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        
+        .success-content h2 {
+            color: var(--burnt-orange);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        
+        .success-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .close-success {
+            background-color: var(--burnt-orange);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .close-success:hover {
+            background-color: var(--orange-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(204, 85, 0, 0.2);
+        }
+        
+        @media (max-width: 700px) {
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .brand-logo {
+                font-size: 2.2rem;
+            }
+            
+            .intro-heading {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            body {
+                padding: 15px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BRZSP1QMX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1BRZSP1QMX');
-</script>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Tell Us What You Love</h1>
-        <p>Help us create collections you'll adore by sharing your preferences.</p>
+    <div class="container">
+        <header class="brand-header">
+            <div class="brand-logo">TOMIKE COUTURE</div>
+            <p class="brand-tagline">Where African heritage meets modern elegance</p>
+        </header>
         
-        <form id="preferenceForm">
-            <!-- Question 1 -->
-            <div class="question">
-                <label>What type of clothing interests you most?</label>
-                <select id="styleInterest">
-                    <option value="">Choose one...</option>
-                    <option value="evening">Evening Wear</option>
-                    <option value="casual">Casual Everyday</option>
-                    <option value="work">Work Attire</option>
-                    <option value="special">Special Occasion</option>
-                </select>
+        <div class="form-intro">
+            <h1 class="intro-heading">
+                Help us create <span class="highlight">your dream wardrobe</span>
+            </h1>
+            
+            <p class="intro-text">
+                Instead of guessing what you'd love to wear, we're asking you directly. 
+                This is your chance to shape our next collection.
+            </p>
+            
+            <div class="callout-box">
+                Think of this as our creative conversation. You share what excites you, and we'll bring it to <strong>life</strong> in ways that celebrate your unique style.
             </div>
             
-            <!-- Question 2 -->
-            <div class="question">
-                <label>What's important to you when choosing clothes? (Choose up to 3)</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" name="values" value="quality"> Premium Quality</label>
-                    <label><input type="checkbox" name="values" value="sustainable"> Sustainable Materials</label>
-                    <label><input type="checkbox" name="values" value="unique"> Unique Design</label>
-                    <label><input type="checkbox" name="values" value="comfort"> Comfort & Fit</label>
-                    <label><input type="checkbox" name="values" value="versatile"> Versatile Styling</label>
+            <p class="intro-text">
+                No commitment. No spam. Just 2 minutes to tell us what you're genuinely excited to wear.
+            </p>
+        </div>
+        
+        <div class="form-container">
+            <form id="preferenceForm">
+                <!-- Contact Info -->
+                <section class="form-section">
+                    <h2 class="section-title"><i class="fas fa-heart"></i>Let's get acquainted</h2>
+                    <p class="section-description">
+                        If we create something you love, would you like us to let you know? 
+                        (Totally optional—your style choices are what matter most)
+                    </p>
+                    
+                    <div class="form-group">
+                        <label for="name">What should we call you?</label>
+                        <input type="text" id="name" placeholder="Your first name or nickname">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (only if you want freebies & updates)</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
+                </section>
+                
+                <!-- Top 4 Outfit Ideas -->
+                <section class="form-section">
+                    <h2 class="section-title"><i class="fas fa-magic"></i>The main event: Your top 4</h2>
+                    <p class="section-description">
+                        Picture your ideal wardrobe. Which 4 pieces would make you say 
+                        <em>"I need this in my life right now"?</em>
+                    </p>
+                    
+                    <div class="outfit-grid">
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="ankara-office-wear">
+                            <span class="outfit-name">Ankara Power Suit</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="ankara-shorts">
+                            <span class="outfit-name">Statement Ankara Shorts</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="ankara-shirts">
+                            <span class="outfit-name">Modern Ankara Shirt</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="aso-oke-evening">
+                            <span class="outfit-name">Aso Oke Evening Glam</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="lace-gowns">
+                            <span class="outfit-name">Lace Statement Gown</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="adire-dresses">
+                            <span class="outfit-name">Effortless Adire Dress</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="dungaree-dresses">
+                            <span class="outfit-name">Chic Dungaree Dress</span>
+                        </label>
+                        
+                        <label class="outfit-option">
+                            <input type="checkbox" name="outfit" value="custom-fits">
+                            <span class="outfit-name">Made-For-You Custom Fit</span>
+                        </label>
+                    </div>
+                    
+                    <div class="selection-counter">
+                        Your picks so far: <span id="selectedCount">0</span> of 4
+                    </div>
+                </section>
+                
+                <!-- Fabric Preferences -->
+                <section class="form-section">
+                    <h2 class="section-title"><i class="fas fa-palette"></i>Fabric love affair</h2>
+                    <p class="section-description">
+                        Which textures and fabrics make your heart beat faster? 
+                        (Tick all that give you that "must touch" feeling)
+                    </p>
+                    
+                    <div class="fabrics-grid">
+                        <div class="fabric-tag" data-fabric="ankara">Vibrant Ankara</div>
+                        <div class="fabric-tag" data-fabric="aso-oke">Regal Aso Oke</div>
+                        <div class="fabric-tag" data-fabric="lace">Elegant Lace</div>
+                        <div class="fabric-tag" data-fabric="adire">Artisanal Adire</div>
+                        <div class="fabric-tag" data-fabric="guinea">Luxury Guinea</div>
+                        <div class="fabric-tag" data-fabric="mixed">Unexpected Mixes</div>
+                    </div>
+                    <input type="hidden" id="selectedFabrics" name="fabrics">
+                </section>
+                
+                <!-- Quick Comments -->
+                <section class="form-section">
+                    <h2 class="section-title"><i class="fas fa-lightbulb"></i>Your style whispers</h2>
+                    <p class="section-description">
+                        Any secret style wishes? Specific colors, silhouettes, or details 
+                        that would make these pieces uniquely yours?
+                    </p>
+                    
+                    <textarea id="comments" rows="4" placeholder="Maybe 'I'm loving muted tones lately' or 'I want pieces that transition from desk to dinner' or 'More pockets please!'..."></textarea>
+                </section>
+                
+                <div class="priority-note">
+                    <strong>Why this matters:</strong> Every selection helps us understand what you truly want. 
+                    We're putting our production energy into the pieces with the most love, so your choices 
+                    directly influence what we create next.
                 </div>
-            </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send My Style Blueprint
+                </button>
+            </form>
             
-            <!-- Question 3 -->
-            <div class="question">
-                <label>Your email for updates</label>
-                <input type="email" id="userEmail" placeholder="you@example.com" required>
+            <div class="form-footer">
+                <p>Thank you for helping us create a collection you'll actually want to wear.</p>
             </div>
-            
-            <button type="submit">Share My Style</button>
-        </form>
-        
-        <p style="margin-top: 20px; font-size: 14px; color: #666;">
-            This information helps us create better collections and personalized experiences.
-        </p>
+        </div>
     </div>
     
-    <!-- This connects our JavaScript code -->
-    <script src="form-handler.js"></script>
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Blueprint received!</h2>
+            <p>Your style preferences are now in our design studio. We're already imagining how to bring your favorite pieces to life.</p>
+            <p>You've just helped shape our next collection—thank you for sharing your vision with us.</p>
+            <button class="close-success" id="closeSuccess">Can't wait to see it!</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('preferenceForm');
+            const successMessage = document.getElementById('successMessage');
+            const closeSuccessBtn = document.getElementById('closeSuccess');
+            const outfitCheckboxes = document.querySelectorAll('input[name="outfit"]');
+            const selectedCountEl = document.getElementById('selectedCount');
+            const fabricTags = document.querySelectorAll('.fabric-tag');
+            const selectedFabricsInput = document.getElementById('selectedFabrics');
+            
+            let selectedOutfits = [];
+            let selectedFabrics = [];
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe form sections
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+            
+            // Limit outfit selection to 4 with engaging feedback
+            outfitCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const checkedBoxes = document.querySelectorAll('input[name="outfit"]:checked');
+                    
+                    if (checkedBoxes.length > 4) {
+                        this.checked = false;
+                        
+                        // Create a temporary notification
+                        const notification = document.createElement('div');
+                        notification.textContent = "Choose 4 pieces you love most—quality over quantity!";
+                        notification.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: var(--burnt-orange);
+                            color: white;
+                            padding: 15px 20px;
+                            border-radius: 10px;
+                            z-index: 1000;
+                            font-weight: 600;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                            animation: fadeInOut 3s ease;
+                        `;
+                        
+                        document.body.appendChild(notification);
+                        
+                        setTimeout(() => {
+                            notification.style.animation = 'fadeOut 0.5s ease';
+                            setTimeout(() => notification.remove(), 500);
+                        }, 2500);
+                        
+                        return;
+                    }
+                    
+                    // Update selected outfits array
+                    selectedOutfits = Array.from(checkedBoxes).map(cb => cb.value);
+                    
+                    // Update counter with animation
+                    selectedCountEl.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        selectedCountEl.style.transform = 'scale(1)';
+                    }, 200);
+                    selectedCountEl.textContent = checkedBoxes.length;
+                    
+                    // Update visual feedback
+                    outfitCheckboxes.forEach(cb => {
+                        const label = cb.closest('.outfit-option');
+                        if (cb.checked) {
+                            label.classList.add('selected');
+                        } else {
+                            label.classList.remove('selected');
+                        }
+                    });
+                });
+            });
+            
+            // Fabric tag selection with animation
+            fabricTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const fabric = this.getAttribute('data-fabric');
+                    
+                    if (this.classList.contains('selected')) {
+                        // Remove fabric with animation
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.classList.remove('selected');
+                            this.style.transform = '';
+                        }, 150);
+                        
+                        selectedFabrics = selectedFabrics.filter(f => f !== fabric);
+                    } else {
+                        // Add fabric with animation
+                        this.classList.add('selected');
+                        this.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                        
+                        selectedFabrics.push(fabric);
+                    }
+                    
+                    // Update hidden input
+                    selectedFabricsInput.value = selectedFabrics.join(',');
+                });
+            });
+            
+            // Form submission
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Check if exactly 4 outfits selected
+                const checkedBoxes = document.querySelectorAll('input[name="outfit"]:checked');
+                if (checkedBoxes.length !== 4) {
+                    // Animate the counter to draw attention
+                    selectedCountEl.style.backgroundColor = 'rgba(204, 85, 0, 0.2)';
+                    selectedCountEl.style.transform = 'scale(1.1)';
+                    
+                    setTimeout(() => {
+                        selectedCountEl.style.transform = '';
+                        setTimeout(() => {
+                            selectedCountEl.style.backgroundColor = '';
+                        }, 500);
+                    }, 500);
+                    
+                    return;
+                }
+                
+                // Collect form data
+                const formData = {
+                    name: document.getElementById('name').value || 'Anonymous friend',
+                    email: document.getElementById('email').value || 'Not shared',
+                    outfits: selectedOutfits,
+                    fabrics: selectedFabrics,
+                    comments: document.getElementById('comments').value || 'No specific notes',
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Add CSS for fadeInOut animation if not present
+                if (!document.querySelector('#notification-animations')) {
+                    const style = document.createElement('style');
+                    style.id = 'notification-animations';
+                    style.textContent = `
+                        @keyframes fadeInOut {
+                            0% { opacity: 0; transform: translateY(-10px); }
+                            15% { opacity: 1; transform: translateY(0); }
+                            85% { opacity: 1; transform: translateY(0); }
+                            100% { opacity: 0; transform: translateY(-10px); }
+                        }
+                        @keyframes fadeOut {
+                            from { opacity: 1; }
+                            to { opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                // Log to console (for testing)
+                console.log('Style blueprint submitted:', formData);
+                
+                // 🔥 GOOGLE ANALYTICS TRACKING - NOW INCLUDED 🔥
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'style_blueprint_submitted', {
+                        'outfit_count': formData.outfits.length,
+                        'fabric_count': formData.fabrics.length,
+                        'has_notes': formData.comments !== 'No specific notes' ? 'yes' : 'no',
+                        'shared_name': formData.name !== 'Anonymous friend' ? 'yes' : 'no',
+                        'selected_outfits': formData.outfits.join(', '),
+                        'selected_fabrics': formData.fabrics.join(', ')
+                    });
+                    
+                    // Additional event for conversion tracking
+                    gtag('event', 'conversion', {
+                        'send_to': 'G-1BRZSP1QMX/blueprint_submission',
+                        'value': 1.0,
+                        'currency': 'USD'
+                    });
+                }
+                
+                // Show success message with delay for smoother transition
+                setTimeout(() => {
+                    successMessage.style.display = 'flex';
+                }, 300);
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    form.reset();
+                    selectedCountEl.textContent = '0';
+                    selectedOutfits = [];
+                    selectedFabrics = [];
+                    selectedFabricsInput.value = '';
+                    
+                    // Reset fabric tags
+                    fabricTags.forEach(tag => {
+                        tag.classList.remove('selected');
+                        tag.style.transform = '';
+                    });
+                    
+                    // Reset outfit selection visual
+                    outfitCheckboxes.forEach(cb => {
+                        const label = cb.closest('.outfit-option');
+                        label.classList.remove('selected');
+                    });
+                }, 500);
+            });
+            
+            // Close success message
+            closeSuccessBtn.addEventListener('click', function() {
+                successMessage.style.opacity = '0';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    successMessage.style.opacity = '1';
+                }, 300);
+            });
+            
+            // Close success message when clicking outside
+            successMessage.addEventListener('click', function(event) {
+                if (event.target === this) {
+                    this.style.opacity = '0';
+                    setTimeout(() => {
+                        this.style.display = 'none';
+                        this.style.opacity = '1';
+                    }, 300);
+                }
+            });
+            
+            // Add subtle hover effect to form container
+            const formContainer = document.querySelector('.form-container');
+            formContainer.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            formContainer.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
