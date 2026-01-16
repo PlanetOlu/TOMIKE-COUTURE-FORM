@@ -791,9 +791,11 @@
                 });
             });
             
+                      // Web App URL for Google Sheets
+            const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyMI-XB65mIKtphhe6VmphMxXMU0eF8vKIZlRrhYYNiD7Ub_9PVrcNHMZYWW8lQ-GdlVw/exec';
+            
             // Form submission
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
+            form.addEventListener('submit', async function(event) {
                 
                 // Check if exactly 4 outfits selected
                 const checkedBoxes = document.querySelectorAll('input[name="outfit"]:checked');
@@ -844,7 +846,7 @@
                 // Log to console (for testing)
                 console.log('Style blueprint submitted:', formData);
                 
-                // GOOGLE ANALYTICS TRACKING 
+                //  GOOGLE ANALYTICS TRACKING 
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'style_blueprint_submitted', {
                         'outfit_count': formData.outfits.length,
@@ -862,7 +864,22 @@
                         'currency': 'USD'
                     });
                 }
-                
+
+                                //  SEND TO GOOGLE SHEETS (AppScript) 
+                try {
+                    await fetch(WEB_APP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    console.log('Data sent to Google Sheets');
+                } catch (sheetsError) {
+                    console.log('Note: Google Sheets submission might be blocked by browser');
+                }
+
                 // Show success message with delay for smoother transition
                 setTimeout(() => {
                     successMessage.style.display = 'flex';
@@ -923,5 +940,4 @@
         });
     </script>
 </body>
-
 </html>
