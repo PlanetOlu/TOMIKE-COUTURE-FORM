@@ -794,8 +794,10 @@
                       // Web App URL for Google Sheets
             const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyMI-XB65mIKtphhe6VmphMxXMU0eF8vKIZlRrhYYNiD7Ub_9PVrcNHMZYWW8lQ-GdlVw/exec';
             
-            // Form submission
+                       // Form submission
             form.addEventListener('submit', async function(event) {
+                event.preventDefault();  // Prevents page refresh
+                
                 
                 // Check if exactly 4 outfits selected
                 const checkedBoxes = document.querySelectorAll('input[name="outfit"]:checked');
